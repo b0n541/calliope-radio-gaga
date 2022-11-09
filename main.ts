@@ -1,14 +1,14 @@
 enum RadioMessage {
     message1 = 49434
 }
-radio.onReceivedNumber(function (receivedNumber) {
-    music.playTone(receivedNumber, music.beat(BeatFraction.Whole))
-})
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     for (let note of melodie) {
         radio.sendNumber(note)
         basic.pause(500)
     }
+})
+radio.onReceivedNumber(function (note) {
+    music.playTone(note, music.beat(BeatFraction.Whole))
 })
 let melodie: number[] = []
 melodie = [
